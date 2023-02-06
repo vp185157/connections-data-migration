@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
+                 version="2.0">
+
+    <package>com.ncr.connections.datamigration.car.withoutepss.model</package>
+
+    <entity class="CarArchive">
+        <table name="car_archives">
+            <unique-constraint name="const_car_archives_id">
+                <column-name>id</column-name>
+            </unique-constraint>
+            <unique-constraint name="const_car_archives_gav">
+                <column-name>group_id</column-name>
+                <column-name>artifact_id</column-name>
+                <column-name>version</column-name>
+            </unique-constraint>
+        </table>
+        <attributes>
+            <id name="id">
+                <generated-value strategy="AUTO"/>
+            </id>
+
+            <basic name="groupId" optional="false">
+                <column name="group_id" updatable="false"/>
+            </basic>
+
+            <basic name="artifactId" optional="false">
+                <column name="artifact_id" updatable="false"/>
+            </basic>
+
+            <basic name="version" optional="false">
+                <column name="version" updatable="false"/>
+            </basic>
+
+            <basic name="name" optional="false">
+                <column name="name" updatable="true"/>
+            </basic>
+
+            <basic name="description" optional="true">
+                <column name="description" updatable="true"/>
+            </basic>
+
+            <basic name="hash" optional="false">
+                <column name="hash" updatable="true"/>
+            </basic>
+
+            <basic name="content" optional="true">
+                <lob/>
+            </basic>
+
+            <basic name="signedStatus" optional="false">
+                <column name="signed_status" updatable="true"/>
+            </basic>
+        </attributes>
+
+    </entity>
+
+</entity-mappings>
